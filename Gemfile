@@ -14,7 +14,8 @@ gem "pg", "~> 1.4"
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.6"
-
+gem 'byebug', '~> 9.0', '>= 9.0.6'
+gem 'json'
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem "importmap-rails", "~> 1.1"
 

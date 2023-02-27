@@ -1,19 +1,13 @@
 import { Controller } from "@hotwired/stimulus"
-import { load } from "../load"
 
 export default class extends Controller {
-  static targets = ['nodeCount', 'linkCount']
-  
-  connect = () => {
-    load().then(data => {
-      this.updateCounts(data.nodes.length, data.links.length)
-    }).catch(error => {
-      console.error(error)
-    })
-  }
-  
-  updateCounts = (nodeCount, linkCount) => {
-    this.nodeCountTarget.textContent = nodeCount
-    this.linkCountTarget.textContent = linkCount
+  static targets = ['nodeCount', 'linkCount'];
+
+  async connect() {
+    const response = await fetch(`/graphs/${this.element.dataset.graphId}.json`);
+    const graphData = await response.json();
+
+    this.nodeCountTarget.textContent = graphData.data.nodes.length;
+    this.linkCountTarget.textContent = graphData.data.links.length;
   }
 }

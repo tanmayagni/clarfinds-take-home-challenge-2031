@@ -1,7 +1,5 @@
 FactoryBot.define do
   factory :link do
-    graph { nil }
-    source { nil }
-    target { nil }
+    graph
   end
 end
